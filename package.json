@@ -1,0 +1,28 @@
+{
+  "name": "bloodkin-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot used for automated reverse image searching.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "reverse",
+    "image",
+    "search"
+  ],
+  "author": "Sinister Vania",
+  "contributors": [
+    {
+      "name": "Joe Pietrzyk"
+    }
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "request": "^2.88.0"
+  }
+}

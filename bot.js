@@ -2,14 +2,14 @@ const botSettings = require("./bot-settings.json");
 const request = require('request');
 const fs = require('fs');
 const Discord = require("discord.js");
-//12345
+
 const bot = new Discord.Client();
 
 bot.on("ready", async () => {
 
   console.log(`bot is ready!  ${bot.user.tag}`);
   var targetChannel = bot.channels.get('473919224218124309');
-  targetChannel.send('im connected.')
+  targetChannel.send("I'm connected.")
 });
 
 

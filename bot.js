@@ -2,7 +2,7 @@ const botSettings = require("./bot-settings.json");
 const request = require('request');
 const fs = require('fs');
 const Discord = require("discord.js");
-
+//12345
 const bot = new Discord.Client();
 
 bot.on("ready", async () => {

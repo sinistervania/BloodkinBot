@@ -1,0 +1,14 @@
+{
+    "auth" : {
+        "discord" : {
+            "authToken": "YOUR AUTH TOKEN HERE"
+        },
+        "imgur" : {
+            "authToken" : "YOUR AUTH TOKEN HERE"
+        }
+    },
+
+    "botWhitelist" : {
+        "id" : "name"
+    }
+}

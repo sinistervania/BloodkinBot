@@ -1,17 +1,15 @@
 const botSettings = require("./bot-settings.json");
-const request = require('request');
 const fs = require('fs');
 const Discord = require("discord.js");
 
 const bot = new Discord.Client();
 
 var initialWhitelist = require('./whitelist.json');
-const pingChannelID = "473919224218124309";
-const pingMessage = "<@&474053859661185034> <@&553778764132253697> I see whitelisted initials!"
+const pingMessage = "<@&474053859661185034> <@&553778764132253697> I see whitelisted initials!";
+
 var targetChannel;
 
 bot.on("ready", async () => {
-
   console.log(`bot is ready!  ${bot.user.tag}`);
   targetChannel = bot.channels.get('473919224218124309');
   targetChannel.send("I'm connected.")
@@ -66,5 +64,6 @@ bot.on('message', (message) => {
 
 })
 
+let authToken = process.env.AUTH_TOKEN ? process.env.AUTH_TOKEN : botSettings.auth.discord.authToken;
 
-bot.login(botSettings.auth.discord.authToken);
+bot.login(authToken);

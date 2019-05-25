@@ -1,0 +1,6 @@
+git+https://github.com/Rapptz/discord.js
+async-timeout==3.0.1
+discord.js==11.4.2
+request
+fs
+./bot-settings.json

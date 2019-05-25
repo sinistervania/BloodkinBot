@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 
 const PORT = process.env.PORT || 3000;
-bot.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
 

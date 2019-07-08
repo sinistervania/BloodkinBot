@@ -1,7 +1,6 @@
 const botSettings = require("./bot-settings.json");
 const fs = require('fs');
 const Discord = require("discord.js");
-
 const bot = new Discord.Client();
 
 
@@ -13,8 +12,9 @@ var targetChannel;
 bot.on("ready", async () => {
   console.log(`bot is ready!  ${bot.user.tag}`);
   targetChannel = bot.channels.get('473919224218124309');
-  targetChannel.send("I'm connected.")
+  targetChannel.send("Hi all! Im Connected.")
 });
+
 
 bot.on('message', (message) => {
   // add to whitelist

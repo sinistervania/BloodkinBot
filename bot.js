@@ -12,7 +12,7 @@ var targetChannel;
 bot.on("ready", async () => {
   console.log(`bot is ready!  ${bot.user.tag}`);
   targetChannel = bot.channels.get('473919224218124309');
-  targetChannel.send("Hi all! Im Connected.")
+  targetChannel.send("Im connected. <3")
 });
 
 

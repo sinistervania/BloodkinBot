@@ -5,7 +5,7 @@ const bot = new Discord.Client();
 
 
 var initialWhitelist = require('./whitelist.json');
-const pingMessage = "<@&474053859661185034> <@&553778764132253697> I see whitelisted initials!";
+const pingMessage = "<@606574879684296768> I see whitelisted initials!";
 
 var targetChannel;
 

@@ -1,34 +1,27 @@
-const botSettings = require("./bot-settings.json");
-const fs = require('fs');
-const Discord = require("discord.js");
-const bot = new Discord.Client();
+import * as fs from 'fs';
+import Discord from 'discord.js';
 
+const botSettings = require("../bot-settings.json")
+var initialWhitelist = require('../whitelist.json');
 
-var initialWhitelist = require('./whitelist.json');
-const pingMessage = "<@&474053859661185034> <@&553778764132253697> I see whitelisted initials!";
+const bot: Discord.Client = new Discord.Client();
+const pingMessage: string = "<@&474053859661185034> <@&553778764132253697> I see whitelisted initials!";
 
-var targetChannel;
+var targetChannel: Discord.TextChannel;
 
 bot.on("ready", async () => {
   console.log(`bot is ready!  ${bot.user.tag}`);
-  targetChannel = bot.channels.get('473919224218124309');
-  targetChannel.send("I'm connected. <3")
+  let channel: Discord.Channel | undefined = bot.channels.get('473919224218124309');
+  if (!channel) {
+    console.log('Cannot find channel to send message');
+    return;
+  }
+  if (!((channel): channel is Discord.TextChannel => channel.type === 'text')(channel)) return;
+  targetChannel.send("I'm connected. <3");
 });
 
 
 bot.on('message', (message) => {
-  // add to whitelist
-  if (message.channel.id == '580049859445522443') {
-    let newInitials = message.content.match(/-.*$/)[0].replace(/-(.*)$/, "$1")
-      .replace(/ /, '').replace(/ \./, '').toUpperCase();
-    initialWhitelist.whitelist.push(newInitials);
-    fs.writeFile('./whitelist.json', JSON.stringify(initialWhitelist), (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  }
-
   // ignores a message if they're not on the bot whitelist
   if (!botSettings.botWhitelist[message.author.id]) { return; }
 
@@ -43,9 +36,13 @@ bot.on('message', (message) => {
         //message.embeds[0].title.includes('A wild pok')) {
         let proxyURL = message.embeds[0].image.proxyURL;
         console.log(proxyURL);
-        
-        let initialsRegEx = /initials are \'(.*)\'/g;
-        let initials = message.embeds[0].description.match(initialsRegEx)[0].replace(initialsRegEx, '$1')
+
+        let initialsRegEx: RegExp = /initials are \'(.*)\'/g;
+        let initialsMatches: RegExpMatchArray | null = message.embeds[0].description.match(initialsRegEx);
+        if (!initialsMatches || !initialsMatches[0]) {
+          return;
+        }
+        let initials: string = initialsMatches[0].replace(initialsRegEx, '$1')
           .replace(/\./g, '').replace(/ /g, '').toUpperCase();
         console.log(initials);
 

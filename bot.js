@@ -4,8 +4,10 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 
 
+
+
 var initialWhitelist = require('./whitelist.json');
-const pingMessage = "<@606574879684296768> I see whitelisted initials!";
+const pingMessage = "<@606574309317804086> I see whitelisted initials!";
 
 var targetChannel;
 
@@ -15,6 +17,13 @@ bot.on("ready", async () => {
   targetChannel.send("I'm connected. <3")
 });
 
+
+bot.on('message', (message) => {
+  // role id check
+  if (message.channel.id == '580049859445522443') {
+    console.log(message.content)
+  }
+})
 
 bot.on('message', (message) => {
   // add to whitelist
@@ -28,6 +37,8 @@ bot.on('message', (message) => {
       }
     });
   }
+
+
 
   // ignores a message if they're not on the bot whitelist
   if (!botSettings.botWhitelist[message.author.id]) { return; }
